@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Travel AI Chatbot</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Page transition fade-out */
+    .fade-out {
+      animation: fadeOut 0.8s forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+
+    .switch-button {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 999;
+    }
+
+    .switch-button:hover {
+      background-color: #555;
+      transform: scale(1.05);
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 80px;
+      right: 30px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 999;
+    }
+
+    .nav-button:hover {
+      background-color: #555;
+      transform: scale(1.05);
+    }
+
+    /* Enhanced bot message box styling */
+    .message.bot-message {
+      background: linear-gradient(135deg, #1e90ff, #00d4ff, #7b68ee); /* Dynamic gradient with purple accent */
+      border-radius: 20px;  
+      padding: 18px;  
+      margin: 12px 0;  
+      box-shadow: 0 6px 15px rgba(0, 191, 255, 0.5), 0 0 20px rgba(30, 144, 255, 0.3); /* Glowing shadow */
+      border: 1px solid rgba(255, 255, 255, 0.2);  
+      color: #fff;  
+      display: flex; 
+      align-items: flex-start;  
+      max-width: 85%;  
+      animation: bounceIn 0.5s ease-out; 
+      transition: transform 0.2s ease, box-shadow 0.2s ease;  
+    }
+
+    .message.bot-message:hover {
+      transform: scale(1.02);  
+      box-shadow: 0 8px 20px rgba(0, 191, 255, 0.7), 0 0 25px rgba(30, 144, 255, 0.5); /* Enhanced glow */
+    }
+
+    .message.bot-message .bot-icon {
+      font-size: 28px; 
+      margin-right: 12px;  
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);  
+      animation: wiggle 1.5s infinite;  
+    }
+
+    .message.bot-message .typing-area {
+      font-size: 17px;  
+      line-height: 1.5; 
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);  
+    }
+
+    .message.bot-message .typing-area p {
+      margin: 6px 0; 
+    }
+
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1) translateY(0);
+      }
+    }
+
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(5deg); }
+      75% { transform: rotate(-5deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="switch-button" onclick="goToExpense()">💰 Expense Tracker</button>
+  <button class="nav-button" onclick="goToabout()">About</button>
+
+ 
+  <div class="container">
+    <h2>🏔️🏔️</h2>
+    <div id="chat-box" class="chat-box"></div>
+    <textarea id="chat-input" placeholder="Ask something..." rows="1"></textarea>
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      for (let i = 0; i < 80; i++) {
+        let star = document.createElement("div");
+        star.className = "star";
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.top = Math.random() * 100 + "vh";
+        star.style.width = star.style.height = Math.random() * 4 + 2 + "px";
+        star.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(star);
+      }
+
+      setInterval(() => {
+        let shootingStar = document.createElement("div");
+        shootingStar.className = "shooting-star";
+        shootingStar.style.left = Math.random() * 100 + "vw";
+        shootingStar.style.top = Math.random() * 50 + "vh";
+        document.body.appendChild(shootingStar);
+        setTimeout(() => shootingStar.remove(), 3000);
+      }, 4000);
+    });
+  </script>
+
+
+  <script>
+    function goToExpense() {
+      document.body.classList.add("fade-out");
+      setTimeout(() => {
+        window.location.href = "/expense/expense.html";
+      }, 700);
+    }
+  </script>
+  <script>
+    function goToabout() {
+      document.body.classList.add("fade-out");
+      setTimeout(() => {
+        window.location.href = "/about.html";
+      }, 700);
+    }
+  </script>
+  <script src="js/chat.js"></script>
+</body>
+</html>
