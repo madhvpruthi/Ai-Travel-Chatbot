@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel AI Startup</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #0f0f0f, #1c1c1c);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .background-text {
+      position: absolute;
+      font-size: 12rem;
+      color: rgba(255, 255, 255, 0.05);
+      user-select: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .launch-button {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      background-color: #222;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px #888;
+      transition: all 0.3s ease;
+    }
+
+    .launch-button:hover {
+      background-color: #444;
+    }
+
+    .airplane {
+      width: 120px;
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: transform 3s ease-in-out;
+      z-index: 1;
+    }
+
+    .fly {
+      animation: takeOff 3s forwards;
+    }
+
+    @keyframes takeOff {
+      0% {
+        transform: translateX(-50%) translateY(0) rotate(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-50%) translateY(-100vh) rotate(0);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-text">Travel AI</div>
+  <div class="container">
+    <button class="launch-button" onclick="launchBot()">Launch Travel AI</button>
+  </div>
+  <img id="airplane" class="airplane" src="airp.png" alt="A" />
+  <script>
+    function launchBot() {
+      const plane = document.getElementById("airplane");
+      plane.classList.add("fly");
+      setTimeout(() => {
+        window.location.href = "http://localhost:3000/index.html";  // Absolute path
+      }, 2800);
+    }
+  </script>
+</body> 
+</html>
